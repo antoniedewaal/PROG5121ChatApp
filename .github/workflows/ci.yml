@@ -21,7 +21,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Compile Java
-      run: javac -d bin -cp "lib/*" src/com/chatapp/*.java
+      run: javac -d bin -cp "lib/*" ChatApp/src/com/chatapp/*.java
 
     - name: Compile Tests
       run: javac -d bin -cp "bin:lib/*" src/test/java/com/chatapp/*.java
