@@ -21,10 +21,10 @@ jobs:
         distribution: 'temurin'
 
     - name: Compile Java
-      run: javac -d bin -cp "lib/*" src/**/*.java
+      run: javac -d bin -cp "lib/*" src/com/chatapp/*.java
 
     - name: Compile Tests
-      run: javac -d bin -cp "bin:lib/*" src/test/**/*.java
+      run: javac -d bin -cp "bin:lib/*" src/test/java/com/chatapp/*.java
 
     - name: Run JUnit Tests
       run: java -cp "bin:lib/*" org.junit.runner.JUnitCore com.chatapp.MessageTest
