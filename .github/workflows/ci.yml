@@ -1,0 +1,30 @@
+name: Java CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Compile Java
+      run: javac -d bin -cp "lib/*" src/**/*.java
+
+    - name: Compile Tests
+      run: javac -d bin -cp "bin:lib/*" src/test/**/*.java
+
+    - name: Run JUnit Tests
+      run: java -cp "bin:lib/*" org.junit.runner.JUnitCore com.chatapp.MessageTest
